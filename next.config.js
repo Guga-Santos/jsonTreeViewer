@@ -2,3 +2,14 @@
 const nextConfig = {}
 
 module.exports = nextConfig
+
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: '/workers/:path*',
+        destination: '/workers/:path*',
+      },
+    ];
+  },
+};

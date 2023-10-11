@@ -12,18 +12,17 @@ export const UploadButton = () => {
       const reader = new FileReader();
 
       reader.onload = (e) => {
-
+        // Verifica se e.target é nulo antes de acessar e.target.result
         if (e.target) {
-          const jsonContent = e.target.result as string;
+          // O JSON analisado está em e.target.result
+          const jsonContent = e.target.result;
 
-          try {
-            const jsonObject = JSON.parse(jsonContent);
-            setFile(jsonObject);
-          } catch (error) {
-            console.error('Erro ao analisar o JSON:', error);
-          }
+          // Agora você pode definir o JSON no estado
+          setFile(jsonContent);
         }
       };
+
+      // Lê o arquivo como texto (JSON)
       reader.readAsText(selectedFile);
     }
   }
